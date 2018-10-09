@@ -19,8 +19,6 @@
 
 \jmlrproceedings{PMLR}{Proceedings of Machine Learning Research}
 
-\usepackage{times}
-
 \renewcommand\cite{\citep}
 
 \ifanonsubmission
