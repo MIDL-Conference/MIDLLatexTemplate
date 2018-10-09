@@ -26,5 +26,5 @@
  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
 \else
  \newcommand{\midlauthor}[1]{\author{#1}}
- \newcommand{\midlacknowledgments}[1]{\acks{#1}
+ \newcommand{\midlacknowledgments}[1]{\acks{#1}}
 \fi
