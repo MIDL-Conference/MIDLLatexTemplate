@@ -1,6 +1,10 @@
 # Medical Imaging with Deep Learning (MIDL) Latex Template
 Latex template for the [MIDL Conference](http://midl.io). Simple use of the JMLR / PMLR style.
 
+# Usage
+
+Please refer to the main JMLR template documentation: http://mirrors.ctan.org/macros/latex/contrib/jmlr/jmlr.pdf
+
 # Licence
 
 This material is subject to the LaTeX Project Public License. 
