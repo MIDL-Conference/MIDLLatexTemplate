@@ -7,11 +7,11 @@
 % make sure they are installed with your latex distribution
 
 \usepackage{mwe} % to get dummy images
-\jmlrvolume{volume to be confirmed}
+\jmlrvolume{-- Under Review}
 \jmlryear{2019}
-\jmlrworkshop{Full Paper -- MIDL 2019}
-%\jmlrworkshop{Extended Abstract -- MIDL 2019}
-\editors{Under Review for MIDL}
+\jmlrworkshop{Full Paper -- MIDL 2019 submission}
+%\jmlrworkshop{Extended Abstract -- MIDL 2019 submission}
+\editors{Under Review for MIDL 2019}
 
 \title[Short Title]{Full Title of Article}
 
@@ -23,24 +23,38 @@
  % enclose the diacritic in braces, e.g. \Name{{\'E}louise Smith}
 
  % Two authors with the same address
-  % \midlauthor{\Name{Author Name1} \Email{abc@sample.com}\and
-  %  \Name{Author Name2} \Email{xyz@sample.com}\\
-  %  \addr Address}
+ % \midlauthor{\Name{Author Name1} \Email{abc@sample.edu}\and
+ %  \Name{Author Name2} \Email{xyz@sample.edu}\\
+ %  \addr Address}
 
  % Three or more authors with the same address:
- % \midlauthor{\Name{Author Name1} \Email{an1@sample.com}\\
- %  \Name{Author Name2} \Email{an2@sample.com}\\
- %  \Name{Author Name3} \Email{an3@sample.com}\\
+ % \midlauthor{\Name{Author Name1} \Email{an1@sample.edu}\\
+ %  \Name{Author Name2} \Email{an2@sample.edu}\\
+ %  \Name{Author Name3} \Email{an3@sample.edu}\\
  %  \addr Address}
 
 
- % Authors with different addresses:
- \midlauthor{\Name{Author Name1} \Email{abc@sample.com}\\
- \addr Address 1
- \AND
- \Name{Author Name2} \Email{xyz@sample.com}\\
- \addr Address 2
- }
+% Authors with different addresses:
+% \midlauthor{\Name{Author Name1} \Email{abc@sample.edu}\\
+% \addr Address 1
+% \AND
+% \Name{Author Name2} \Email{xyz@sample.edu}\\
+% \addr Address 2
+% }
+
+%\footnotetext[1]{Contributed equally}
+
+% More complicate cases, e.g. with dual affiliations and joint authorship
+\midlauthor{\Name{Author Name1\midljointauthortext{Contributed equally}\nametag{$^{1,2}$}} \Email{abc@sample.edu}\\
+\addr $^{1}$ Address 1 \\
+\addr $^{2}$ Address 2 \AND
+\Name{Author Name2\midlotherjointauthor\nametag{$^{1}$}} \Email{xyz@sample.edu}\\
+\Name{Author Name3\nametag{$^{2}$}} \Email{alphabeta@example.edu}\\
+\Name{Author Name4\midljointauthortext{Contributed equally}\nametag{$^{3}$}} \Email{uvw@foo.ac.uk}\\
+\addr $^{3}$ Address 3 \AND
+\Name{Author Name5\midlotherjointauthor\nametag{$^{4}$}} \Email{fgh@bar.com}\\
+\addr $^{3}$ Address 4
+}
 
 \begin{document}
 
@@ -56,16 +70,16 @@ List of keywords, comma separated.
 
 \section{Introduction}
 
-This is where the content of your paper goes.  Remember to:
+This is where the content of your paper goes.  Some random notes:
 \begin{itemize}
-\item Use \LaTeX \cite{Lamport:Book:1989}.
-\item Note that despite the use of natbib, here \verb|\cite|  defaults to
+\item You should use \LaTeX \cite{Lamport:Book:1989}.
+\item JMLR/PMLR uses natbib for references. For simplicity, here, \verb|\cite|  defaults to
   parenthetical citations, i.e. \verb|\citep|. You can of course also
-  use \verb|\citet| for a textual citation if you wish.
-\item Follow the guidelines provided by the conference.
+  use \verb|\citet| for textual citations.
+\item You should follow the guidelines provided by the conference.
 \item Read through the JMLR template documentation for specific \LaTeX
   usage questions.
-\item Note that the JMLR template provide many handy functionalities
+\item Note that the JMLR template provides many handy functionalities
 such as \verb|\figureref| to refer to a figure,
 e.g. \figureref{fig:example},  \verb|\tableref| to refer to a table,
 e.g. \tableref{tab:example} and \verb|\equationref| to refer to an equation,

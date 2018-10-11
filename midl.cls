@@ -21,6 +21,9 @@
 
 \renewcommand\cite{\citep}
 
+\newcommand{\midljointauthortext}[1]{\nametag{\thanks{#1}}}
+\newcommand{\midlotherjointauthor}{\nametag{\addtocounter{footnote}{-1}\footnotemark}}
+
 \ifanonsubmission
  \newcommand{\midlauthor}[1]{\author{\Name{Author(s) names withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
