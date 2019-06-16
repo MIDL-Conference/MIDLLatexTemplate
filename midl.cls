@@ -1,6 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{midl}[2018/10/09 v1.0 MIDL Proceedings]
 
+% Note that if the use of NoHyper below still causes
+% issues, we could suppress hyperlinks to footnotes entirely
+% \PassOptionsToPackage{hyperfootnotes=false}{hyperref}
+
 \@ifundefined{ifanonsubmission}{
   \newif\ifanonsubmission
   \anonsubmissionfalse
@@ -28,6 +32,6 @@
  \newcommand{\midlauthor}[1]{\author{\Name{Author(s) names withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
 \else
- \newcommand{\midlauthor}[1]{\author{#1}}
+ \newcommand{\midlauthor}[1]{\author{\begin{NoHyper}#1\end{NoHyper}}}
  \newcommand{\midlacknowledgments}[1]{\acks{#1}}
 \fi
