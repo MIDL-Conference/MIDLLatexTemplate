@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/MIDL-Conference/MIDLLatexTemplate.svg?branch=master)](https://travis-ci.com/MIDL-Conference/MIDLLatexTemplate)
+
 # Medical Imaging with Deep Learning (MIDL) Latex Template
 Latex template for the [MIDL Conference](http://midl.io). Simple use of the JMLR / PMLR style.
 
