@@ -18,7 +18,8 @@ jobs:
     dist: bionic
   - name: "osx - mactex from homebrew - texlive 2019"
     os: osx
-before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
 script:
-  - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+  - pdflatex -interaction=nonstopmode -halt-on-error midl-sampleabstract
+  - bibtex midl-sampleabstract
+  - pdflatex -interaction=nonstopmode -halt-on-error midl-sampleabstract
+  - pdflatex -interaction=nonstopmode -halt-on-error midl-sampleabstract
