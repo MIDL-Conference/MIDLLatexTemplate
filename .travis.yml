@@ -5,7 +5,7 @@ addons:
     packages:
     - texlive-full
   homebrew:
-    #update: true
+    update: true
     casks:
     - mactex
 jobs:
