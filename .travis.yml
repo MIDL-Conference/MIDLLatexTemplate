@@ -1,4 +1,13 @@
 language: minimal
+addons:
+  apt:
+    update: true
+    packages:
+    - texlive-full
+  homebrew:
+    update: true
+    casks:
+    - mactex
 jobs:
   include:
   - name: "ubuntu 16.04 - texlive 2015"
@@ -7,10 +16,9 @@ jobs:
   - name: "ubuntu 18.04 - texlive 2017"
     os: linux
     dist: bionic
-  - name: "osx - mactex from homebrew"
+  - name: "osx - mactex from homebrew - texlive 2019"
     os: osx
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew cask install mactex && exec $SHELL; fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then tlmgr path add; fi
 script:
   - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
