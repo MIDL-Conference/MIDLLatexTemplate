@@ -8,6 +8,9 @@ addons:
     update: true
     casks:
     - mactex
+env:
+  global:
+    - MIKDOCK=""
 jobs:
   include:
   - name: "ubuntu 16.04 - texlive 2015"
@@ -23,12 +26,12 @@ jobs:
     dist: bionic
     env:
     - USE_MIKTEX=true
+    - MIKDOCK="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex"
     services:
     - docker
 before_install:
-  - alias mylatexmk=latexmk
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
   - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
-  - if [ "$USE_MIKTEX" ]; then alias mylatexmk="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex latexmk"; fi
+  - if [ "$USE_MIKTEX" ]; then $MIKDOCK mpm --find-updates && $MIKDOCK mpm --update; fi
 script:
-  - mylatexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+  - $MIKDOCK latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
