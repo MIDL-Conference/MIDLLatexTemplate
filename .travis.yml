@@ -1,11 +1,11 @@
 language: minimal
 addons:
   apt:
-    update: true
+    #update: true
     packages:
     - texlive-full
   homebrew:
-    update: true
+    #update: true
     casks:
     - mactex
 jobs:
@@ -19,6 +19,6 @@ jobs:
   - name: "osx - mactex from homebrew - texlive 2019"
     os: osx
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then tlmgr path add; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
 script:
   - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
