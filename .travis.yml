@@ -18,7 +18,16 @@ jobs:
     dist: bionic
   - name: "osx - mactex from homebrew - texlive 2019"
     os: osx
+  - name: "miktex docker"
+    os: linux
+    dist: bionic
+    env:
+    - USE_MIKTEX=true
+    services:
+    - docker
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
+  - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
+  - if [ "$USE_MIKTEX" ]; then alias latexmk="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex latexmk"; fi
 script:
   - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
