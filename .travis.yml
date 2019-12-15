@@ -1,7 +1,4 @@
 language: minimal
-os:
-  - linux
-  - osx
 jobs:
   include:
   - name: "ubuntu 16.04 - texlive 2015"
@@ -13,7 +10,7 @@ jobs:
   - name: "osx - mactex from homebrew"
     os: osx
 before_install:
-  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew cask install mactex; fi
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew cask install mactex && exec $SHELL; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full; fi
 script:
   - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
