@@ -26,8 +26,9 @@ jobs:
     services:
     - docker
 before_install:
+  - alias mylatexmk=latexmk
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
   - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
-  - if [ "$USE_MIKTEX" ]; then alias latexmk="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex latexmk"; fi
+  - if [ "$USE_MIKTEX" ]; then alias mylatexmk="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex latexmk"; fi
 script:
-  - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+  - mylatexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
