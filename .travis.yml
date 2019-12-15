@@ -1,13 +1,19 @@
-sudo: required
+language: minimal
+os:
+  - linux
+  - osx
 jobs:
   include:
   - name: "ubuntu 16.04 - texlive 2015"
     os: linux
     dist: xenial
-  - name: "ubuntu 18.04 - texlive 2019"
+  - name: "ubuntu 18.04 - texlive 2017"
     os: linux
     dist: bionic
+  - name: "osx - mactex from homebrew"
+    os: osx
 before_install:
-- sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew update && brew cask install mactex; fi
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full; fi
 script:
-- latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+  - latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
