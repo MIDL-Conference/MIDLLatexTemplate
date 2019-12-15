@@ -1,6 +1,13 @@
 sudo: required
-dist: xenial
+jobs:
+  include:
+  - name: "ubuntu 16.04 - texlive 2015"
+    os: linux
+    dist: xenial
+  - name: "ubuntu 18.04 - texlive 2019"
+    os: linux
+    dist: bionic
 before_install:
 - sudo apt-get -qq update && sudo apt-get install -y --no-install-recommends texlive-full
 script:
-- pdflatex -interaction=nonstopmode -halt-on-error *.tex
+- latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
