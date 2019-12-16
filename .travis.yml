@@ -35,12 +35,9 @@ jobs:
         - CMDPREFIX="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex"
       services:
         - docker
-  allow_failures:
-    - env:
-      - USE_MIKTEX=true
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
   - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
-  - if [ "$USE_MIKTEX" ]; then $CMDPREFIX mpm --find-updates && $CMDPREFIX mpm --update; fi
+  - if [ "$USE_MIKTEX" ]; then $CMDPREFIX mpm --find-updates --admin && $CMDPREFIX mpm --update --admin && $CMDPREFIX mpm --update-db; fi
 script:
   - $CMDPREFIX latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex

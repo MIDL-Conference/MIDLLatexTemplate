@@ -21,6 +21,10 @@
 
 \LoadClass[pmlr]{jmlr}
 
+% Temporary workaround for incompatibility of jmlr class with filename handeling in 2019 latex release
+% (see https://tex.stackexchange.com/questions/513300/unable-to-compile-with-includegraphics-using-jmlr-cls)
+\def\set@curr@file#1{\def\@curr@file{#1}}
+
 \jmlrproceedings{PMLR}{Proceedings of Machine Learning Research}
 
 \renewcommand\cite{\citep}
