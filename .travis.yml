@@ -1,37 +1,43 @@
 language: minimal
-addons:
-  apt:
-    update: true
-    packages:
-    - texlive-full
-  homebrew:
-    update: true
-    casks:
-    - mactex
 env:
   global:
-    - MIKDOCK=""
+    - CMDPREFIX=""
 jobs:
   include:
-  - name: "ubuntu 16.04 - texlive 2015"
-    os: linux
-    dist: xenial
-  - name: "ubuntu 18.04 - texlive 2017"
-    os: linux
-    dist: bionic
-  - name: "osx - mactex from homebrew - texlive 2019"
-    os: osx
-  - name: "miktex docker"
-    os: linux
-    dist: bionic
-    env:
-    - USE_MIKTEX=true
-    - MIKDOCK="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex"
-    services:
-    - docker
+    - name: "ubuntu 16.04 - texlive 2015"
+      os: linux
+      dist: xenial
+      addons:
+        apt:
+          update: true
+          packages:
+            - texlive-full
+    - name: "ubuntu 18.04 - texlive 2017"
+      os: linux
+      dist: bionic
+      addons:
+        apt:
+          update: true
+          packages:
+            - texlive-full
+    - name: "osx - mactex from homebrew - texlive 2019"
+      os: osx
+      addons:
+        homebrew:
+          update: true
+          casks:
+            - mactex
+    - name: "miktex docker"
+      os: linux
+      dist: bionic
+      env:
+        - USE_MIKTEX=true
+        - CMDPREFIX="docker run -ti -v miktex:/miktex/.miktex -v `pwd`:/miktex/work miktex/miktex"
+      services:
+        - docker
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
   - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
-  - if [ "$USE_MIKTEX" ]; then $MIKDOCK mpm --find-updates && $MIKDOCK mpm --update; fi
+  - if [ "$USE_MIKTEX" ]; then $CMDPREFIX mpm --find-updates && $MIKDOCK mpm --update; fi
 script:
-  - $MIKDOCK latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
+  - $CMDPREFIX latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
