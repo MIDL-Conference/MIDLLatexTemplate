@@ -38,6 +38,6 @@ jobs:
 before_install:
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then export PATH=/Library/TeX/texbin:$PATH; fi
   - if [ "$USE_MIKTEX" ]; then docker pull miktex/miktex && docker volume create --name miktex; fi
-  - if [ "$USE_MIKTEX" ]; then $CMDPREFIX mpm --find-updates && $MIKDOCK mpm --update; fi
+  - if [ "$USE_MIKTEX" ]; then $CMDPREFIX mpm --find-updates && $CMDPREFIX mpm --update; fi
 script:
   - $CMDPREFIX latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex
