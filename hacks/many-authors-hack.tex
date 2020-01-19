@@ -2,8 +2,12 @@
 \makeatletter
 % hack the footer of the title page as it doesn't seem to automatically use the et al. version when spanning acros multiple pages
 \renewcommand*{\@titlefoot}{\scriptsize\copyright\space\@jmlryear
+    \ifanonsubmission
+    \space Author(s) names withheld.\hfill
+    \else
     \space \@firstauthor\space \emph{et al}.\hfill
     \@reprint
+    \fi
   }
 \makeatother
 %\end{comment}
