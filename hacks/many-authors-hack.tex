@@ -1,0 +1,42 @@
+%\begin{comment}
+\makeatletter
+% hack the footer of the title page as it doesn't seem to automatically use the et al. version when spanning acros multiple pages
+\renewcommand*{\@titlefoot}{\scriptsize\copyright\space\@jmlryear
+    \space \@firstauthor\space \emph{et al}.\hfill
+    \@reprint
+  }
+\makeatother
+%\end{comment}
+
+% \begin{comment}
+\makeatletter
+% remove the vbox in @jmlrmaketitle which prevents the text to be split across several pages
+\renewcommand{\@jmlrmaketitle}{
+  % specify the page style in case it spans over several pages. Not sure why this is needed
+  \thispagestyle{jmlrtps}%
+  % define a new label for the first page as otherwise it starts from 2 in the header
+  \label{jmlrstartnew}%
+  % hack the spacing to mimick what happens with a vbox
+  \null\vspace{-\parindent}\vspace{-2pt}{
+  \hsize\textwidth
+  \linewidth\hsize
+ \jmlrpretitle
+  {%
+    \def\titletag##1{##1}%
+    \@title
+  }%
+ \jmlrposttitle
+ \jmlrpreauthor \@author \jmlrpostauthor
+}
+% hack the spacing to mimick what happens with a vbox
+\vspace{2pt}
+}
+\makeatother
+%\end{comment}
+
+%\begin{comment}
+\makeatletter
+% hack the footer to use the new counter
+\renewcommand*\@jmlrpages{\pageref{jmlrstartnew}--\pageref{jmlrend}}
+\makeatother
+%\end{comment}

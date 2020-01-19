@@ -1,0 +1,93 @@
+\documentclass{midl} % Include author names
+%\documentclass[anon]{midl} % Anonymized submission
+
+\usepackage{mwe} % to get dummy images
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\input{hacks/many-authors-hack}
+
+% Header for extended abstracts
+\jmlrproceedings{MIDL}{Medical Imaging with Deep Learning}
+\jmlrpages{}
+\jmlryear{2020}
+
+% to be uncommented for submissions under review
+\jmlrworkshop{Short Paper -- MIDL 2020 submission}
+\jmlrvolume{-- Under Review}
+\editors{Under Review for MIDL 2020}
+
+\title[Short Title]{Full Title of Article}
+
+\midlauthor{
+	\Name{Buthor B \nametag{$^{1,2,3}$}} \\
+	\addr $^{1}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{2}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{3}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name{Author B \nametag{$^{2,3,4}$}} \Email{} \\
+	\addr $^{4}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name{Author C \nametag{$^{2,3,4}$}} \Email{} \\
+	\Name{Author D \nametag{$^{2,3,4,5}$}} \Email{} \\
+	\addr $^{5}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name{Author E \nametag{$^{2,3,4,5}$}} \Email{} \\
+	\Name{Author F \nametag{$^{2,3,4,5}$}} \Email{} \\
+	\Name[6,7]{Author G \nametag{$^{6,7}$}} \Email{} \\
+	\addr $^{6}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{7}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[6,7]{Author H \nametag{$^{6,7}$}} \Email{} \\
+	\Name[8]{Author I \nametag{$^{8}$}} \Email{} \\
+	\addr $^{8}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[9,10]{Author J \nametag{$^{9,10}$}} \Email{} \\
+	\addr $^{9}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{10}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[9,10]{Author K \nametag{$^{9,10}$}} \Email{} \\
+	\Name[11,12]{Author L \nametag{$^{11,12}$}} \Email{} \\
+	\addr $^{11}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{12}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[13,14]{Author M \nametag{$^{13, 14}$}} \Email{} \\
+	\addr $^{13}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{14}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[13,14]{Author N \nametag{$^{13,14}$}} \Email{} \\
+	\Name[15,16,17]{Author O \nametag{$^{15,16,17}$}} \Email{} \\
+	\addr $^{15}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \\
+	\addr $^{16}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country\\
+	\addr $^{17}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[15,16,17]{Author P \nametag{$^{15,16,17}$}} \Email{} \\
+	\Name[15,18]{Author Q \nametag{$^{15,18}$}} \Email{} \\
+	\addr $^{18}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[15,18,19]{Author R \nametag{$^{15,18,19}$}} \Email{} \\
+	\addr $^{19}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[20,21]{Author S \nametag{$^{20,21}$}} \Email{} \\
+	\addr $^{20}$ German Cancer Research Center (DKFZ), Heidelberg and German Cancer Consortium (DKTK) partner site Tübingen, Germany \\
+	\addr $^{21}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country\AND
+	\Name[20,21]{Author T \nametag{$^{20,21}$}} \Email{} \\
+	\Name[2,3,5,22]{Author U \nametag{$^{2,3,5,22}$}} \Email{} \\
+	\addr $^{22}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[2,3,4,5,22]{Author V \nametag{$^{2,3,4,5,22}$}} \Email{} \\
+	\Name[2,3,4,5,22]{Author W \nametag{$^{2,3,4,5,22}$}} \Email{} \\
+	\Name[2,3,4,5,22,23]{Author X \nametag{$^{2,3,4,5,22,23}$}} \Email{} \\
+	\addr $^{23}$ very long affiliation which needs probably from two to three lines or maybe more on a rendered pdf and is honestly very long indeed, City, Country \AND
+	\Name[2,3,5]{Author Y \nametag{$^{2,3,5}$}} \Email{}
+}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\blindtext
+\end{abstract}
+
+\begin{keywords}
+List of keywords, comma separated.
+\end{keywords}
+
+\section{Introduction}
+
+\Blindtext[5][2]
+
+% Acknowledgments---Will not appear in anonymized version
+\midlacknowledgments{\blindtext}
+
+\end{document}
