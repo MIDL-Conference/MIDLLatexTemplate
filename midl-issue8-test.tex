@@ -5,7 +5,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\makeatletter
+\@ifclasslater{jmlr}{2020/01/31}{%
+ % Using a post 1.26 version of jmlr.cls - all good
+}{%
+% Otherwise use a workaround
+\GenericWarning{midl}{Using a pre 1.26 version of jmlr.cls with an
+  midl-specific work around for long author list}
 \input{hacks/many-authors-hack}
+}
+\makeatother
 
 % Header for extended abstracts
 \jmlrproceedings{MIDL}{Medical Imaging with Deep Learning}
