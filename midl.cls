@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{midl}[2020/01/19 v1.2 MIDL Proceedings]
+\ProvidesClass{midl}[2020/10/18 v1.3 MIDL Proceedings]
 
 % Note that if the use of NoHyper below still causes
 % issues, we could suppress hyperlinks to footnotes entirely
