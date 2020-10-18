@@ -32,6 +32,12 @@
 \def\set@curr@file#1{\def\@curr@file{#1}}
 }
 
+% (Temporary?) workaround for counting float-only last pages
+% See https://github.com/MIDL-Conference/MIDLLatexTemplate/issues/10
+\usepackage{placeins}
+\let\old@jmlrenddoc\@jmlrenddoc
+\renewcommand*\@jmlrenddoc{\FloatBarrier\old@jmlrenddoc}
+
 \jmlrproceedings{PMLR}{Proceedings of Machine Learning Research}
 
 \renewcommand\cite{\citep}
