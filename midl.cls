@@ -43,7 +43,7 @@
 \renewcommand\cite{\citep}
 
 \newcommand{\midljointauthortext}[1]{\nametag{\thanks{#1}}}
-\newcommand{\midlotherjointauthor}{\nametag{\addtocounter{footnote}{-1}\footnotemark}}
+\newcommand{\midlotherjointauthor}{\nametag{\footnotemark\addtocounter{footnote}{-1}}}
 
 \ifanonsubmission
  \newcommand{\midlauthor}[1]{\author{\Name[Anonymous]{Author name(s) withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
