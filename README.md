@@ -7,6 +7,9 @@ Latex template for the [MIDL Conference](http://midl.io). Simple use of the JMLR
 
 Please refer to the main JMLR template documentation: http://mirrors.ctan.org/macros/latex/contrib/jmlr/jmlr.pdf
 
+* `midl-fullpaper.tex` is intended for full paper submissions
+* `midl-shortpaper.tex` is intended for short paper submissions
+
 # Licence
 
 This material is subject to the LaTeX Project Public License. 
