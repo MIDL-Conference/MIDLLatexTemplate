@@ -18,17 +18,13 @@ jobs:
       - name: Compile LaTeX document on Linux
         run: eval "$COMMAND"
       
-      - name: Archive full paper PDF
+      - name: Archive PDFs
         uses: actions/upload-artifact@v2
         with:
-          name: full-paper-example
-          path: midl-fullpaper.pdf
-      
-      - name: Archive short paper PDF
-        uses: actions/upload-artifact@v2
-        with:
-          name: short-paper-example
-          path: midl-shortpaper.pdf
+          name: paper-examples
+          path: |
+            midl-fullpaper.pdf
+            midl-shortpaper.pdf
 
   build_macos:
     runs-on: macos-latest
