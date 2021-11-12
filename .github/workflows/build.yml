@@ -1,0 +1,99 @@
+name: Build LaTeX document
+on: [push]
+env:
+  COMMAND: latexmk -pdf -interaction=nonstopmode -halt-on-error *.tex tests/*.tex
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download GitHub repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install TeX Live using apt
+        run: sudo apt update && sudo apt install -y texlive-full
+
+      - name: Compile LaTeX document on Linux
+        run: eval "$COMMAND"
+
+  build_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Download GitHub repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install MacTeX using Homebrew
+        run: brew install --cask mactex
+
+      - name: Compile LaTeX document on macOS
+        run: |
+          eval "$(/usr/libexec/path_helper)"
+          eval "$COMMAND"
+
+  build_windows:
+    runs-on: windows-latest
+    env:
+      MIKTEX_BASE_URL: 'https://ctan.math.illinois.edu/systems/win32/miktex'
+      LOCAL_MIKTEX_REPO: 'C:/MiKTeX-Repo'
+      BIN_DIR_WINDOWS:      'C:/Program Files/MiKTeX/miktex/bin/x64/'
+      BIN_DIR_WINDOWS_UNIX: '/c/Program Files/MiKTeX/miktex/bin/x64/'
+
+    steps:
+      - name: Download GitHub repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Download MiKTeX CLI installer
+        shell: bash
+        env:
+          MIKTEX_ZIP: miktexsetup-4.1-x64.zip
+        run: |
+          curl --location --remote-name $MIKTEX_BASE_URL/setup/windows-x64/$MIKTEX_ZIP
+          unzip $MIKTEX_ZIP
+
+      - name: Set up the local package directory
+        shell: bash
+        run: |
+          ./miktexsetup_standalone --verbose \
+            --local-package-repository=$LOCAL_MIKTEX_REPO \
+            --remote-package-repository="$MIKTEX_BASE_URL/tm/packages/" \
+            --package-set=essential \
+            download
+
+      - name: Installing from the local package directory
+        shell: bash
+        run: |
+          ./miktexsetup_standalone --verbose \
+            --local-package-repository=$LOCAL_MIKTEX_REPO \
+            --package-set=essential \
+            --shared=yes \
+            install
+
+      - name: Update packages
+        shell: bash
+        run: |
+          # Adding MiKTeX bin folder to PATH and to GITHUB_PATH
+          echo "$BIN_DIR_WINDOWS" >> $GITHUB_PATH
+          export PATH="$BIN_DIR_WINDOWS_UNIX:$PATH"
+
+          # Configure MiKTeX to install missing packages on the fly"
+          initexmf --admin --verbose --set-config-value='[MPM]AutoInstall=1'
+
+          # Configure default mirror for packages
+          mpm --admin --set-repository="$MIKTEX_BASE_URL/tm/packages/"
+          mpm --find-updates
+          mpm --admin --find-updates
+
+      - name: Compile LaTeX document
+        shell: bash
+        run: |
+          # Adding MiKTeX bin folder to PATH and to GITHUB_PATH
+          echo "$BIN_DIR_WINDOWS" >> $GITHUB_PATH
+          export PATH="$BIN_DIR_WINDOWS_UNIX:$PATH"
+
+          eval "$COMMAND"
