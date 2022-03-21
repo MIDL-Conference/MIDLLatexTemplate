@@ -228,6 +228,9 @@ TSWLatexianTemp*
 # KBibTeX
 *~[0-9]*
 
+# emacs
+.#*
+
 # auto folder when using emacs and auctex
 ./auto/*
 *.el

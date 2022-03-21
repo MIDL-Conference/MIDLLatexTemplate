@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{midl}[2020/10/18 v1.3 MIDL Proceedings]
+\ProvidesClass{midl}[2022/03/21 v1.4 MIDL Proceedings]
 
 % Note that if the use of NoHyper below still causes
 % issues, we could suppress hyperlinks to footnotes entirely
@@ -32,11 +32,15 @@
 \def\set@curr@file#1{\def\@curr@file{#1}}
 }
 
-% (Temporary?) workaround for counting float-only last pages
+\@ifclasslater{jmlr}{2022/01/29}{%
+% Using a post 1.29 version of jmlr.cls - all good
+}{%
+% Temporary workaround for counting float-only last pages
 % See https://github.com/MIDL-Conference/MIDLLatexTemplate/issues/10
 \usepackage{placeins}
 \let\old@jmlrenddoc\@jmlrenddoc
 \renewcommand*\@jmlrenddoc{\FloatBarrier\old@jmlrenddoc}
+}
 
 \jmlrproceedings{PMLR}{Proceedings of Machine Learning Research}
 
@@ -47,7 +51,7 @@
 
 \ifanonsubmission
  \newcommand{\midlauthor}[1]{\author{\Name[Anonymous]{Author name(s) withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
- \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
+Open  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
 \else
  \newcommand{\midlauthor}[1]{\author{\begin{NoHyper}#1\end{NoHyper}}}
  \newcommand{\midlacknowledgments}[1]{\acks{#1}}
