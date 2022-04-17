@@ -59,7 +59,7 @@ jobs:
       - name: Download MiKTeX CLI installer
         shell: bash
         env:
-          MIKTEX_ZIP: miktexsetup-4.1-x64.zip
+          MIKTEX_ZIP: miktexsetup-4.2-x64.zip
         run: |
           curl --location --remote-name $MIKTEX_BASE_URL/setup/windows-x64/$MIKTEX_ZIP
           unzip $MIKTEX_ZIP
