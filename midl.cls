@@ -51,7 +51,7 @@
 
 \ifanonsubmission
  \newcommand{\midlauthor}[1]{\author{\Name[Anonymous]{Author name(s) withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
-Open  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
+ \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
 \else
  \newcommand{\midlauthor}[1]{\author{\begin{NoHyper}#1\end{NoHyper}}}
  \newcommand{\midlacknowledgments}[1]{\acks{#1}}
