@@ -27,7 +27,7 @@ jobs:
             midl-shortpaper.pdf
 
   build_macos:
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - name: Download GitHub repository
         uses: actions/checkout@v2
@@ -43,7 +43,7 @@ jobs:
           eval "$COMMAND"
 
   build_windows:
-    runs-on: windows-latest
+    runs-on: windows-2019
     env:
       MIKTEX_BASE_URL: 'https://ctan.math.illinois.edu/systems/win32/miktex'
       LOCAL_MIKTEX_REPO: 'C:/MiKTeX-Repo'
