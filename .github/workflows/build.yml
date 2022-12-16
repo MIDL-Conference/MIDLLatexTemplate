@@ -27,7 +27,7 @@ jobs:
             midl-shortpaper.pdf
 
   build_macos:
-    runs-on: macos-latest
+    runs-on: macos-11
     steps:
       - name: Download GitHub repository
         uses: actions/checkout@v2
