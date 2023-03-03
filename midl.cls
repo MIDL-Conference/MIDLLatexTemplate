@@ -89,3 +89,8 @@
  \@midl@check@packages
  \let\@midl@check@packages\relax
 }
+
+\renewcommand*{\@titlefoot}{\scriptsize\copyright\space\@jmlryear\space \href{https://creativecommons.org/licenses/by/4.0/}{CC-BY 4.0},%
+    \space\@jmlr@authors.\hfill
+    \@reprint
+}
