@@ -83,6 +83,12 @@
   This package conflicts with the midl class. \MessageBreak
   Please use the acronym package instead%
   }{}}{}%
+
+ \@ifpackageloaded{times}{%
+  \ClassError{midl}{Package 'times' detected.\MessageBreak
+  This package overrides the default font, which affects the page limit.\MessageBreak
+  Its use is prohibited, please remove its import.%
+  }{}}{}%
 }
 
 \AtBeginDocument{%
