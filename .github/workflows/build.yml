@@ -46,6 +46,7 @@ jobs:
     runs-on: windows-2019
     env:
       MIKTEX_BASE_URL: 'https://ctan.math.illinois.edu/systems/win32/miktex'
+      MIKTEX_ZIP: 'miktexsetup-5.5.0+1763023-x64.zip'
       LOCAL_MIKTEX_REPO: 'C:/MiKTeX-Repo'
       BIN_DIR_WINDOWS:      'C:/Program Files/MiKTeX/miktex/bin/x64/'
       BIN_DIR_WINDOWS_UNIX: '/c/Program Files/MiKTeX/miktex/bin/x64/'
@@ -58,8 +59,6 @@ jobs:
 
       - name: Download MiKTeX CLI installer
         shell: bash
-        env:
-          MIKTEX_ZIP: miktexsetup-5.2.0%2Bb8f430f-x64.zip
         run: |
           curl --location --remote-name $MIKTEX_BASE_URL/setup/windows-x64/$MIKTEX_ZIP
           unzip $MIKTEX_ZIP
