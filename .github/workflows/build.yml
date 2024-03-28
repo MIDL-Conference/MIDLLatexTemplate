@@ -35,7 +35,7 @@ jobs:
           fetch-depth: 0
 
       - name: Install MacTeX using Homebrew
-        run: brew install --cask mactex
+        run: brew update && brew install --cask mactex
 
       - name: Compile LaTeX document on macOS
         run: |
