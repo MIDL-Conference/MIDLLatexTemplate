@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{midl}[2022/03/21 v1.4 MIDL Proceedings]
+\ProvidesClass{midl}[2025/01/08 v1.5 MIDL Proceedings]
 
 % Note that if the use of NoHyper below still causes
 % issues, we could suppress hyperlinks to footnotes entirely
@@ -47,13 +47,13 @@
 \renewcommand\cite{\citep}
 
 \newcommand{\midljointauthortext}[1]{\nametag{\thanks{#1}}}
-\newcommand{\midlotherjointauthor}{\nametag{\footnotemark\addtocounter{footnote}{-1}}}
+\newcommand{\midlotherjointauthor}{\begin{NoHyper}\nametag{\footnotemark\addtocounter{footnote}{-1}}\end{NoHyper}}
 
 \ifanonsubmission
  \newcommand{\midlauthor}[1]{\author{\Name[Anonymous]{Author name(s) withheld} \Email{email(s) withheld} \\ \addr Address withheld}}
  \newcommand{\midlacknowledgments}[1]{\acks{Acknowledgments withheld.}}
 \else
- \newcommand{\midlauthor}[1]{\author{\begin{NoHyper}#1\end{NoHyper}}}
+ \newcommand{\midlauthor}[1]{\author{#1}}
  \newcommand{\midlacknowledgments}[1]{\acks{#1}}
 \fi
 
@@ -100,3 +100,6 @@
     \space\@jmlr@authors.\hfill
     \@reprint
 }
+
+\RequirePackage{hyperref}
+\def\orcid#1{\href{https://orcid.org/#1}{\includegraphics[width=.8em]{orcid.png}}}
