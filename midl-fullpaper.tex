@@ -6,12 +6,16 @@
 % make sure they are installed with your latex distribution
 
 \usepackage{mwe} % to get dummy images
+\usepackage{booktabs}
+% \usepackage[pass, showframe]{geometry}
+
+
 \jmlrvolume{-- Under Review}
 \jmlryear{2026}
 \jmlrworkshop{Full Paper -- MIDL 2026 submission}
 \editors{Under Review for MIDL 2026}
 
-\title[Short Title]{Full Title of Article}
+\title[Working with \LaTeX]{Working with and not against \LaTeX}
 
  % Use \Name{Author Name} to specify the name.
  % If the surname contains spaces, enclose the surname
@@ -43,14 +47,14 @@
 %\footnotetext[1]{Contributed equally}
 
 % More complicate cases, e.g. with dual affiliations and joint authorship
-\midlauthor{\Name{Author Name1\midljointauthortext{Contributed equally}\nametag{$^{1,2}$}} \orcid{1111-2222-3333-4444} \Email{abc@sample.edu}\\
-\addr $^{1}$ Address 1 \\
-\addr $^{2}$ Address 2 \AND
-\Name{Author Name2\midlotherjointauthor\nametag{$^{1}$}} \Email{xyz@sample.edu}\\
-\Name{Author Name3\nametag{$^{2}$}} \Email{alphabeta@example.edu}\\
-\Name{Author Name4\midljointauthortext{Contributed equally}\nametag{$^{3}$}} \Email{uvw@foo.ac.uk}\\
-\addr $^{3}$ Address 3 \AND
-\Name{Author Name5\midlotherjointauthor\nametag{$^{4}$}} \Email{fgh@bar.com}\\
+\midlauthor{\Name{Author Name1\midljointauthortext{Contributed equally}\nametag{$^{1,2}$}} \orcid{1111-2222-3333-4444} \Email{abc@sample.edu} \\
+\Name{Author Name2\midlotherjointauthor\nametag{$^{1}$}},
+\Name{Author Name3\nametag{$^{2}$}} ,
+\Name{Author Name4\midljointauthortext{Contributed equally}\nametag{$^{3}$}},
+\Name{Author Name5\midlotherjointauthor\nametag{$^{4}$}} \\
+\addr $^{1}$ Address 1,
+\addr $^{2}$ Address 2,
+\addr $^{3}$ Address 3,
 \addr $^{4}$ Address 4
 }
 
@@ -59,74 +63,233 @@
 \maketitle
 
 \begin{abstract}
-This is a great paper and it has a concise abstract.
+\LaTeX is, despite being a fairly amazing piece of software, and the \emph{de facto} writing tool in many areas of the scientific community, quite misunderstood, which often translates in frustration and related human emotions.
+Undertanding first what \LaTeX is trying to achieve, can be a first stepping-stone to then guide it toward satisfactory results, notably when there is a page limit to satisfy (which the compiler is not aware of). This small workshop part is an attempt to clarify it.
 \end{abstract}
 
 \begin{keywords}
-List of keywords, comma separated.
+        \LaTeX, git, tools, compiler, indentation
 \end{keywords}
 
 \section{Introduction}
+        One of the most important concept to understand \LaTeX, is that is attempt to ``fill'' the space, both horizontally (the \emph{hyphenation} that many may be familiar with), both also vertically (with, notably, \emph{stretching}).
 
-This is where the content of your paper goes.  Some random
-notes\footnote{Random footnote are discouraged}:
-\begin{itemize}
-\item You should use \LaTeX \cite{Lamport:Book:1989}.
-\item JMLR/PMLR uses natbib for references. For simplicity, here, \verb|\cite|  defaults to
-  parenthetical citations, i.e. \verb|\citep|. You can of course also
-  use \verb|\citet| for textual citations.
-\item Eprints such as arXiv papers can of course be cited \cite{Hinton:arXiv:2015:Distilling}. We recomend using a \verb|@misc| bibtex entry for these as shown in the sample bibliography.
-\item You should follow the guidelines provided by the conference.
-\item Read through the JMLR template documentation for specific \LaTeX
-  usage questions.
-\item Note that the JMLR template provides many handy functionalities
-such as \verb|\figureref| to refer to a figure,
-e.g. \figureref{fig:example},  \verb|\tableref| to refer to a table,
-e.g. \tableref{tab:example} and \verb|\equationref| to refer to an equation,
-e.g. \equationref{eq:example}.
-\end{itemize}
+        \subsection{Horizontal filling}
+                On top of hyphenation (i.e., splitting a word across a line, typically like this \emph{Pseudopseudohypoparathyroidism}).
 
-\begin{table}[htbp]
- % The first argument is the label.
- % The caption goes in the second argument, and the table contents
- % go in the third argument.
-\floatconts
-  {tab:example}%
-  {\caption{An Example Table}}%
-  {\begin{tabular}{ll}
-  \bfseries Dataset & \bfseries Result\\
-  Data1 & 0.12345\\
-  Data2 & 0.67890\\
-  Data3 & 0.54321\\
-  Data4 & 0.09876
-  \end{tabular}}
-\end{table}
+                But it is not the only way that horizontal filling is achieved: the \TeX engine has other levers to achieve: stretching between words (that can be reduced or increased), and stretching between \emph{letters}.
+                Examples:
 
-\begin{figure}[htbp]
- % Caption and label go in the first argument and the figure contents
- % go in the second argument
-\floatconts
-  {fig:example}
-  {\caption{Example Image}}
-  {\includegraphics[width=0.5\linewidth]{example-image}}
-\end{figure}
+                \noindent Lorem ipsum ullamco exercitation consequat laboris duis quis sunt %magna deserunt consectetur ex duis reprehenderit deserunt dolor incididunt aute fugiat consequat laboris eiusmod exercitation quis aliqua id voluptate exercitation esse voluptate in aute ea minim amet esse consectetur est pariatur eiusmod.
 
-\begin{algorithm2e}
-\caption{Computing Net Activation}
-\label{alg:net}
- % older versions of algorithm2e have \dontprintsemicolon instead
- % of the following:
- %\DontPrintSemicolon
- % older versions of algorithm2e have \linesnumbered instead of the
- % following:
- %\LinesNumbered
-\KwIn{$x_1, \ldots, x_n, w_1, \ldots, w_n$}
-\KwOut{$y$, the net activation}
-$y\leftarrow 0$\;
-\For{$i\leftarrow 1$ \KwTo $n$}{
-  $y \leftarrow y + w_i*x_i$\;
-}
-\end{algorithm2e}
+                \noindent Lorem ipsum ullamco exercitation consequat laboris duis quis sunt magna %deserunt consectetur ex duis reprehenderit deserunt dolor incididunt aute fugiat consequat laboris eiusmod exercitation quis aliqua id voluptate exercitation esse voluptate in aute ea minim amet esse consectetur est pariatur eiusmod.
+
+                \noindent Lorem ipsum ullamco exercitation consequat laboris duis quis sunt magna deserunt %consectetur ex duis reprehenderit deserunt dolor incididunt aute fugiat consequat laboris eiusmod exercitation quis aliqua id voluptate exercitation esse voluptate in aute ea minim amet esse consectetur est pariatur eiusmod.
+
+
+                \noindent Lorem ipsum ullamco exercitation consequat laboris duis quis sunt magna deserunt consectetur %ex duis reprehenderit deserunt dolor incididunt aute fugiat consequat laboris eiusmod exercitation quis aliqua id voluptate exercitation esse voluptate in aute ea minim amet esse consectetur est pariatur eiusmod.
+
+
+                \noindent Lorem ipsum ullamco exercitation consequat laboris duis quis sunt magna deserunt consec-tetur %ex duis reprehenderit deserunt dolor incididunt aute fugiat consequat laboris eiusmod exercitation quis aliqua id voluptate exercitation esse voluptate in aute ea minim amet esse consectetur est pariatur eiusmod.
+
+
+        \subsection{Vertical filling}
+                What is important to know is that:
+                \begin{itemize}
+                        \item there is both a minimum space between blocks (section, caption, figure, ...), plus a \emph{stretch} component;
+                        \item the engine will keep them coherent across a single page (i.e., stretch all stretchable spaces evenly and not a single one);
+                        \item on top of vertical filling, it has a preference to start new sections and sub-sections on a new space (to avoid having a new section starting with then no text or only one line).
+                \end{itemize}
+
+                To illustrate this, Sections \ref{sec:section} and \ref{sec:section_dup} show exactly the same structure, and almost the same text; but with Section \ref{sec:section} slightly longer: yet they both take one whole page, and it takes more changes to go below one full page.
+
+        \subsection{Guiding \LaTeX}
+                Despite its very powerful engine (much better than the one from M*cr*s*ft W*** or popular web browser), it still relies on heuristics, and it may require guidance from time to time, \emph{especially when one is trying to respect a specific page limit}.
+
+                Moreover, due to the way \LaTeX is practiced, a lot of copy and paste tend to accumulate extra commands, parameters, than may subtly but surely work against the (tired) student.
+
+                \begin{figure}
+                        \centering
+                        \includegraphics[width=0.85\textwidth]{example-image-golden}
+                        \caption{This nice teaser Figure hook the reviewer and guarantees an accept.}
+                \end{figure}
+
+                \emph{``When it comes to typography, the human eye is the ultimate judge''} --- Me paraphrasing someone that may be alive of deceased. Plausibly from \cite{felici2011complete}.
+
+\clearpage
+\section{Section}
+        \label{sec:section}
+        \subsection{Subsection}
+                Ut non ut aliqua anim velit ad in sunt dolore ea sit elit eiusmod adipisicing veniam deserunt dolor aute id sint nisi exercitation cillum aute voluptate reprehenderit mollit do officia tempor in qui fugiat laboris officia incididunt ex anim in laboris minim in velit voluptate qui qui ex minim pariatur nulla in dolor dolore ut anim ut sit in ex aute eu pariatur voluptate dolore ut tempor ad labore occaecat adipisicing irure aute velit laborum fugiat dolor deserunt consequat labore amet do magna incididunt dolor est cupidatat nulla veniam in sunt irure sit adipisicing in tempor culpa commodo officia ullamco officia esse cillum qui non consequat in ut pariatur aliquip sint fugiat elit veniam voluptate velit fugiat qui excepteur adipisicing non voluptate in minim dolore consequat fugiat mollit laborum magna reprehenderit nulla laboris dolor ut id reprehenderit in amet sunt commodo sit dolor nulla sit enim in excepteur fugiat nulla minim labore in reprehenderit deserunt in aute consectetur consectetur veniam occaecat non in adipisicing dolor sint id duis exercitation sunt labore est dolore adipisicing exercitation aliqua aliqua culpa esse ex eu consectetur velit laboris reprehenderit laborum laboris aliquip ea id reprehenderit tempor consequat proident culpa dolore laboris excepteur reprehenderit nostrud dolore laboris sed aliquip nostrud cillum culpa eu sint sed anim voluptate labore irure est.
+
+        \subsection{Sub title}
+                \subsubsection{Sub sub section}
+                        Incididunt reprehenderit officia dolor est in voluptate sint fugiat amet occaecat sit consectetur esse consectetur aliquip in commodo ad dolor cupidatat ad mollit eiusmod velit sit nulla elit.
+
+                        Quis reprehenderit commodo ut culpa adipisicing reprehenderit id elit dolor exercitation fugiat consectetur in duis est id laboris tempor pariatur et dolor consectetur.
+
+                \subsubsection{Sub sub title}
+                        Eiusmod do aute consequat commodo eiusmod incididunt nisi ea dolore pariatur nulla sed sunt officia duis esse magna in in qui. Veniam magna cillum amet incididunt aute sint amet in in anim ut dolore voluptate adipisicing ut consectetur dolor dolore dolore laborum sunt sint aliquip et.
+
+                        Velit ut dolor culpa fugiat elit proident commodo anim aliquip pariatur qui sint eiusmod nostrud consectetur tempor id exercitation in velit aliqua in quis labore esse commodo officia do ullamco. Dolore voluptate occaecat aliqua deserunt duis eu dolor amet cillum minim nostrud deserunt sunt consectetur non commodo nisi laborum dolore consequat officia amet occaecat ut dolor sit sit incididunt nisi pariatur dolor consequat consectetur mollit.
+
+                        \paragraph{Para} Lorem ipsum fugiat ut laborum consequat dolore qui ut amet excepteur culpa. Deserunt et magna.
+
+                        \paragraph{graph} Cupidatat occaecat dolor veniam aute tempor amet do non incididunt dolore do dolore. Lorem ipsum anim excepteur elit. Enim ad consectetur nulla tempor minim incididunt quis mollit elit dolore ut fugiat ullamco ex proident.
+
+\clearpage
+\section{Section}
+        \label{sec:section_dup}
+        \subsection{Subsection}
+                Ut non ut aliqua anim velit ad in sunt dolore ea sit elit eiusmod adipisicing veniam deserunt dolor aute id sint nisi exercitation cillum aute voluptate reprehenderit mollit do officia tempor in qui fugiat laboris officia incididunt ex anim in laboris minim in velit voluptate qui qui ex minim pariatur nulla in dolor dolore ut anim ut sit in ex aute eu pariatur voluptate dolore ut tempor ad labore occaecat adipisicing irure aute velit laborum fugiat dolor deserunt consequat labore amet do magna incididunt dolor est cupidatat nulla veniam in sunt irure sit adipisicing in tempor culpa commodo officia ullamco officia esse cillum qui non consequat in ut pariatur aliquip sint fugiat elit veniam voluptate velit fugiat qui excepteur adipisicing non voluptate in minim dolore consequat fugiat mollit laborum magna reprehenderit nulla laboris dolor ut id reprehenderit in amet sunt commodo sit dolor nulla sit enim in excepteur fugiat nulla minim labore in reprehenderit deserunt in aute consectetur consectetur veniam occaecat non in adipisicing dolor sint id duis exercitation sunt labore est dolore adipisicing exercitation aliqua aliqua culpa esse ex eu consectetur velit laboris reprehenderit laborum laboris aliquip ea id reprehenderit tempor consequat proident culpa dolore laboris excepteur reprehenderit nostrud dolore laboris sed aliquip nostrud cillum culpa eu sint sed anim voluptate labore irure est.
+
+        \subsection{Sub title}
+                \subsubsection{Sub sub section}
+                        Incididunt reprehenderit officia dolor est in voluptate sint fugiat amet occaecat sit consectetur esse consectetur aliquip in commodo ad dolor cupidatat ad mollit eiusmod velit sit nulla elit.
+
+                        Quis reprehenderit commodo ut culpa adipisicing reprehenderit id elit dolor exercitation fugiat consectetur in duis est id laboris tempor pariatur et dolor consectetur.
+
+                \subsubsection{Sub sub title}
+                        Eiusmod do aute consequat commodo eiusmod incididunt nisi ea dolore pariatur nulla sed sunt officia duis esse magna in in qui. Veniam magna cillum amet incididunt aute sint amet in in anim ut dolore voluptate adipisicing ut consectetur dolor dolore dolore laborum sunt sint aliquip et.
+
+                        Velit ut dolor culpa fugiat elit proident commodo anim aliquip pariatur qui sint eiusmod nostrud consectetur tempor id exercitation in velit aliqua in quis labore esse commodo officia do ullamco. Dolore voluptate occaecat aliqua deserunt duis eu dolor amet cillum minim nostrud deserunt sunt consectetur non commodo nisi laborum dolore consequat officia amet occaecat ut dolor sit sit incididunt nisi pariatur dolor consequat consectetur mollit.
+
+                        \paragraph{Para} Lorem ipsum fugiat ut laborum consequat dolore qui ut amet excepteur culpa.
+
+                        \paragraph{graph} Cupidatat occaecat dolor veniam aute tempor amet do non incididunt dolore do dolore.
+
+\section{Related works}
+        Adipisicing culpa velit duis velit labore labore in sint ut dolore reprehenderit nulla tempor laboris in laboris anim nulla cupidatat quis ut veniam consectetur excepteur fugiat deserunt reprehenderit incididunt et deserunt incididunt aliqua eu id pariatur in commodo magna culpa adipisicing commodo consequat ullamco laborum pariatur tempor ea laborum aute id esse aliqua ut officia adipisicing esse pariatur mollit mollit et sed in dolore est sint occaecat est laborum ea dolor duis aliqua mollit nulla sunt amet officia sunt enim dolor et excepteur sit nulla nostrud id labore dolor sunt minim exercitation in irure laborum in qui voluptate consequat in ut cillum excepteur fugiat et adipisicing do irure adipisicing voluptate sit duis aliqua commodo quis sunt qui est tempor dolore tempor ad mollit cillum ut proident cupidatat sint et ad aliquip in ea est esse pariatur dolore sit enim adipisicing aliquip eiusmod qui dolore. Lorem ipsum cupidatat sit ullamco nisi enim dolore laboris pariatur culpa ut ut esse magna dolor proident eiusmod mollit eu irure dolor aliquip incididunt ullamco incididunt fugiat sint ea aliquip dolor nisi pariatur labore ut quis irure sed veniam ex eiusmod ut deserunt do in sit elit dolor ut cupidatat reprehenderit incididunt in laborum anim irure reprehenderit ut pariatur laborum exercitation ut nisi non laborum proident ullamco in dolor consectetur ullamco sunt velit et sint deserunt dolore ut exercitation labore consequat anim deserunt tempor reprehenderit commodo anim in commodo magna amet pariatur voluptate sunt reprehenderit irure cillum et excepteur labore tempor qui culpa ut consequat aute dolor duis occaecat nisi proident ex laboris nisi eiusmod ad deserunt consectetur ex anim reprehenderit reprehenderit duis eu laboris commodo esse esse non labore nostrud elit voluptate nostrud veniam cupidatat duis ut duis eiusmod dolore qui non commodo qui elit do veniam ea irure velit ut quis.
+
+        \begin{figure}[h]
+                \centering
+                \includegraphics[width=0.5\textwidth]{example-image-a}
+                \caption{Qui dolore velit.}
+        \end{figure}
+
+        Occaecat aute ullamco laboris adipisicing amet anim qui fugiat officia tempor adipisicing nostrud dolore nisi quis incididunt dolor dolore qui aute exercitation aliquip irure enim cillum mollit elit sed.
+
+        Mollit est dolor ex labore pariatur est voluptate eu amet quis voluptate velit sunt ut eu sit velit proident non veniam duis aliquip quis esse reprehenderit eiusmod eu anim qui excepteur fugiat culpa ut pariatur magna.
+
+\section{Method}
+        Cillum id laborum ea culpa tempor excepteur non adipisicing laborum aute minim in ut labore adipisicing laborum elit exercitation laborum minim nisi ea ut est magna adipisicing veniam id velit sed ex incididunt magna laborum:
+        \begin{equation}
+                e^{i\pi} + 1 = 0
+        \end{equation}
+        which also amounts to say:
+        \begin{equation}
+                e^{i\pi} = -1.
+        \end{equation}
+        Taking into account that
+        \begin{equation}
+                2 = 2 \times 1 = 1 + 1,
+        \end{equation}
+        we can show that:
+        \begin{equation}
+                2e^{i\pi} + 2 = 0.
+        \end{equation}
+
+        Citations can sometimes take too much space if not paying attention to the citation style, e.g.: ``\emph{Hinton et al. \cite{Hinton:arXiv:2015:Distilling} did...}'' could be reduced to ``\emph{\citet{Hinton:arXiv:2015:Distilling} did...}'' using the \verb|\citet| command.
+
+
+\section{Experiments}
+        \subsection{Datasets}
+                Irure cupidatat amet adipisicing irure ad sed quis id elit dolor aute sed minim dolore deserunt in ullamco excepteur incididunt aliquip qui aliqua sint pariatur ut dolor sed nisi.
+                \begin{itemize}
+                        \item \textbf{DatasetA} Exercitation aliqua anim ea enim laboris consectetur reprehenderit ad eiusmod dolore nisi officia quis.
+                        \item \textbf{Dataset B} Enim commodo nisi in sed proident aliquip mollit ut magna sed.
+                        \item \textbf{Super great and with a long name dataset} Quis dolor exercitation aliqua dolore velit nulla dolor sunt exercitation. Duis duis amet minim quis deserunt officia consequat veniam ea incididunt ea cillum consequat proident ut veniam consequat.
+                \end{itemize}
+
+        \subsection{Implementation details}
+                Cillum ad laboris pariatur exercitation do duis deserunt mollit sit ut consequat tempor ullamco tempor sed nostrud veniam ut laborum voluptate non ut dolore id labore eu velit adipisicing anim est ut dolor eu fugiat.
+
+                We use a super great optimizer with a learning rate of 100000000 (as it goes faster) and a batch size of 3 (prime number). The seed of 4 was chosen randomly from a fair dice roll. We test on the validation set as we found empirically that number goes up.
+
+        \subsection{Results}
+                Labore incididunt cupidatat cillum ea ea do in excepteur sint ea voluptate dolore est do proident aliquip duis dolor veniam esse in anim commodo qui consectetur aliqua laborum mollit labore.
+
+                \begin{table}[t]
+                        % The first argument is the label.
+                        % The caption goes in the second argument, and the table contents
+                        % go in the third argument.
+                        \floatconts
+                        {tab:example}%
+                        {\caption{An Example Table}}%
+                        {\begin{tabular}{ll}
+                        \bfseries Dataset & \bfseries Result\\
+                        Data1 & 0.12345\\
+                        Data2 & 0.67890\\
+                        Data3 & 0.54321\\
+                        Data4 & 0.09876
+                        \end{tabular}}
+                \end{table}
+
+                The results with the optimizer folds selection (were only the good ones are kept) as displayed below:
+
+                \begin{table}[t]
+                        \centering
+                        \caption{For once the Overleaf Table creation tool had some use, except it was placing the caption at the wrong position (it should be on top). Showing the average (std) of the made-up numbers.}
+                        \begin{tabular}{c|ccc|cccc}
+                                \toprule
+                               Method & M1 & M2 & Cost & CO$_2$ & Speed & M5 & M7\\
+                                \cmidrule(lr){2-4} \cmidrule(lr){5-8}
+                               a & 1 (0.98) & 1 (0.98) & 4 (0.98) & 5 (0.98) & 22 (0.98) & 1 (0.98) & 5 (0.98) \\
+                               b & 2 (0.98) & 2 (0.98) & 4 (0.98) & 5 (0.98) & 24 (0.98) & 2 (0.98) & 4 (0.98) \\
+                               c & 3 (0.98) & 2 (0.98) & 4 (0.98) & 5 (0.98) & 22 (0.98) & 3 (0.98) & 3 (0.98) \\
+                               \textbf{d} & 4 (0.98) & 2 (0.98) & 4 (0.98) & 5 (0.98) & 500 (0.98) & 4 (0.98) & 2 (0.98) \\
+                               e & 5 (0.98) & 2 (0.98) & 4 (0.98) & 5 (0.98) & 1 (0.98) & 5 (0.98) & 1 (0.98) \\
+                                \bottomrule
+                        \end{tabular}
+                        \label{tab:placeholder}
+                \end{table}
+
+                For big tables, and notably reporting percentages (like, e.g., the Dice score or some accuracy): mentioning that the unit is in \% and then typing $98$ takes less space than $0.98$ everywhere (especially when there are many columns). This also overloads less the reader.
+
+                The number of significant figures is also worth considering: is an accuract of $0.4785544$ worth reporting that precisely? $0.48$ may be plenty, for the \emph{intent} and \emph{message}.
+
+                Consequat aute cillum aliqua amet reprehenderit in eu exercitation ut nisi sunt ut incididunt cupidatat ullamco ut dolor in anim cillum et occaecat velit aute in esse cupidatat in id ea qui cupidatat est deserunt tempor sunt incididunt. Reprehenderit sed in culpa laborum mollit nulla ad incididunt ullamco eiusmod dolor quis occaecat commodo nisi reprehenderit minim ullamco dolore tempor nisi est ullamco in minim consectetur.
+
+                \begin{figure}
+                        % Caption and label go in the first argument and the figure contents
+                        % go in the second argument
+                        \floatconts
+                        {fig:example}
+                        {\caption{Example Image}}
+                        {\includegraphics[width=0.5\linewidth]{example-image}}
+                \end{figure}
+
+                \begin{figure}
+                        % Caption and label go in the first argument and the figure contents
+                        % go in the second argument
+                        \floatconts
+                        {fig:example}
+                        {\caption{Example Image 2}}
+                        {\includegraphics[width=0.5\linewidth]{example-image-b}}
+                \end{figure}
+
+        \section{Discussion}
+                Enim nisi occaecat quis in id anim sed in dolore eu exercitation amet aliqua eiusmod velit laboris consequat nostrud enim aliqua quis irure sit fugiat esse reprehenderit pariatur eu ut aliquip labore dolore commodo et et excepteur do irure deserunt deserunt in excepteur et velit magna ullamco minim exercitation dolore sint laborum culpa dolore in fugiat proident consectetur ea sint sed dolor aliqua cupidatat elit cupidatat dolore voluptate sed nostrud ut eu reprehenderit ad reprehenderit occaecat et ad ex proident incididunt incididunt officia irure est ut eiusmod aute ea sint culpa velit proident adipisicing consectetur nostrud reprehenderit duis enim excepteur mollit minim anim cupidatat pariatur id ea dolor ad non mollit minim voluptate ut culpa aliquip laboris ad reprehenderit laborum duis in consequat cillum reprehenderit ut sunt commodo laboris dolore et exercitation aliquip occaecat dolor laboris non minim deserunt sunt anim est dolore occaecat.
+
+                \begin{figure}[t!!!!!]
+                        \centering
+                        \includegraphics[width=0.5\textwidth]{example-image-c}
+                        \caption{A Figure can be placed at many places, but trailing parameters can cause havoc.}
+                \end{figure}
+
+                In nisi commodo elit elit sed aliqua deserunt amet in laborum minim eiusmod exercitation cillum proident consectetur aliqua proident non mollit mollit adipisicing labore aliqua irure fugiat anim veniam occaecat veniam dolor dolore cillum excepteur pariatur in in amet ut veniam culpa ex exercitation aliqua consectetur fugiat sunt dolor culpa enim velit eiusmod in ut sint proident enim dolor adipisicing et in excepteur officia ex velit consectetur consectetur dolor nulla mollit fugiat incididunt dolore adipisicing ut incididunt pariatur in mollit commodo ea fugiat officia ut dolore proident magna et sed minim in reprehenderit anim tempor anim irure aute occaecat magna in dolore fugiat sint sunt proident in sint adipisicing eu ea sint ut velit minim dolor aliqua velit laboris ex enim exercitation dolor irure minim culpa consequat pariatur in laboris enim minim ullamco duis dolor est deserunt consequat ut enim ullamco in ut proident minim ut magna ad magna consequat nulla sit sit eu dolor aute amet in dolor commodo excepteur minim occaecat dolore commodo commodo ullamco aute laboris nostrud ut do labore ex dolor minim tempor incididunt sint eiusmod tempor in cupidatat veniam.
+
+                Lorem ipsum officia dolore non est do dolor in velit occaecat exercitation qui veniam laboris labore eiusmod aute cillum laborum laborum labore ad irure voluptate mollit dolore duis dolor incididunt sit sit exercitation nostrud aliquip officia. Lorem ipsum non anim adipisicing aliqua ad laborum non in nostrud pariatur mollit labore nulla non eiusmod dolore dolor deserunt laborum incididunt aute nisi eiusmod reprehenderit sunt nulla sed esse id consectetur dolor in amet tempor.
+
+
+
+        \section{Conclusion}
+                Exercitation commodo velit elit dolore commodo enim pariatur nostrud ut dolor amet anim incididunt officia exercitation incididunt incididunt anim aliqua aute tempor eu do anim dolore minim id tempor ut duis velit aliqua adipisicing reprehenderit.
+
+                Amet aliquip et magna ad in laboris dolore magna laborum adipisicing velit in deserunt laboris veniam eu eiusmod sit deserunt in veniam minim commodo nulla ut.
+
+
+
 
 \clearpage  % Acknowledgements, references, and appendix do not count toward the page limit (if any)
 % Acknowledgments---Will not appear in anonymized version
@@ -136,17 +299,17 @@ $y\leftarrow 0$\;
 \bibliography{midl-samplebibliography}
 
 
+\clearpage
 \appendix
+        \section{Proof of Theorem 1}
 
-\section{Proof of Theorem 1}
+        This is a boring technical proof of
+        \begin{equation}\label{eq:example}
+        \cos^2\theta + \sin^2\theta \equiv 1.
+        \end{equation}
 
-This is a boring technical proof of
-\begin{equation}\label{eq:example}
-\cos^2\theta + \sin^2\theta \equiv 1.
-\end{equation}
+        \section{Proof of Theorem 2}
 
-\section{Proof of Theorem 2}
-
-This is a complete version of a proof sketched in the main text.
+        This is a complete version of a proof sketched in the main text.
 
 \end{document}
