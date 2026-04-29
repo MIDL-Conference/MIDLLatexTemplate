@@ -89,6 +89,12 @@
   This package overrides the default font, which affects the page limit.\MessageBreak
   Its use is prohibited, please remove its import.%
   }{}}{}%
+
+ \@ifpackageloaded{accents}{%
+  \ClassWarning{midl}{Package 'accents' detected.\MessageBreak
+  This package is incompatible with the jmlr class.\MessageBreak
+  See https://github.com/MIDL-Conference/MIDLLatexTemplate/issues/25 for a workaround.%
+  }{}}{}%
 }
 
 \AtBeginDocument{%
